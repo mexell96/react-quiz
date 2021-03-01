@@ -4,9 +4,9 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Drawer.module.css";
 
 const links = [
-  { to: "/", labe: "Список", exact: true },
-  { to: "/auth", labe: "Авторизация", exact: false },
-  { to: "/quiz-creator", labe: "Создать тест", exact: false },
+  { to: "/", label: "Список", exact: true },
+  { to: "/auth", label: "Авторизация", exact: false },
+  { to: "/quiz-creator", label: "Создать тест", exact: false },
 ];
 
 class Drawer extends Component {
@@ -21,9 +21,9 @@ class Drawer extends Component {
           <NavLink
             to={link.to}
             exact={link.exact}
-            activeClassName={classes.active}>
-            onClick={this.clickHandler}
-            {}
+            activeClassName={classes.active}
+            onClick={this.clickHandler}>
+            {link.label}
           </NavLink>
         </li>
       );
