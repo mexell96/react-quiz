@@ -1,3 +1,4 @@
+import { autoLogin } from "./store/actions/auth";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, Switch, withRouter } from "react-router-dom";
@@ -10,16 +11,16 @@ import Layout from "./hoc/Layout/Layout";
 
 class App extends Component {
   componentDidMount() {
-    this.props.authLogin()
+    this.props.autoLogin();
   }
-  
+
   render() {
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
         <Route path="/quiz/:id" component={Quiz} />
-        <Route path="/" component={QuizList} />
-        <Redirect to={"/"} />
+        <Route path="/" exact component={QuizList} />
+        <Redirect to="/" />
       </Switch>
     );
 
@@ -28,9 +29,9 @@ class App extends Component {
         <Switch>
           <Route path="/quiz-creator" component={QuizCreator} />
           <Route path="/quiz/:id" component={Quiz} />
-          <Route path="/" component={QuizList} />
           <Route path="/logout" component={Logout} />
-          <Redirect to={"/"} />
+          <Route path="/" exact component={QuizList} />
+          <Redirect to="/" />
         </Switch>
       );
     }
